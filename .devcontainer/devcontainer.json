@@ -1,0 +1,51 @@
+{
+  "name": "BeamPipelines",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      "VARIANT": "bullseye"
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-community/features/direnv": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/git": {},
+    "ghcr.io/devcontainers/features/java:1": {
+      "jdkDistro": "ms",
+      "version": "17",
+      "installMaven": "true",
+      "mavenVersion": "3.9.8",
+      "installGradle": "false"
+    }
+  },
+
+  // setup and provisioning
+  //"postCreateCommand": "bash ${containerWorkspaceFolder}/.devcontainer/post-create.sh",
+  "postStartCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+  "waitFor": "postCreateCommand",
+  // Configure tool-specific properties.
+  "customizations": {     "jetbrains": {
+      "settings": {
+        "com.intellij:app:BaseRefactoringSettings.safe_delete_when_delete": false,
+        "com.intellij:app:BaseRefactoringSettings.rename_search_in_comments_for_file": false,
+        "com.intellij:app:BaseRefactoringSettings.rename_search_for_references_for_file": false
+      },
+      "plugins": [
+        "org.jetbrains.plugins.github",
+        "org.jetbrains.plugins.gitlab"
+      ],
+      "backend": "IntelliJ"
+    },
+    "vscode": {
+      "extensions": [
+      ]
+    }
+  },
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+  "remoteUser": "vscode"
+}
+
