@@ -35,7 +35,10 @@
       },
       "plugins": [
         "org.jetbrains.plugins.github",
-        "org.jetbrains.plugins.gitlab"
+        "org.jetbrains.plugins.gitlab",
+        "com.intellij.bigdatatools.kafka",
+        "com.intellij.bigdatatools.binary.files",
+        "com.intellij.bigdatatools.rfs"
       ],
       "backend": "IntelliJ"
     },
